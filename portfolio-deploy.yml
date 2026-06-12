@@ -8,7 +8,9 @@ permissions:
 jobs:
     deploy:
         runs-on: ubuntu-latest
-
+        environments: 
+            name: github-pages
+            url: ${{ steps.deployment.outputs.url}}
         steps:
         # get access to your portfolio code via pre-built action
             - name: Checkout Code
@@ -20,7 +22,7 @@ jobs:
          # static pages 
             - name: uplad static files
               uses: actions/upload-pages-artifact2v4
-
+          # page live
             - name: delpoy to github pages
               uses: action/deploy-pages@v4
   
